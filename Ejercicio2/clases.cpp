@@ -1,6 +1,7 @@
 #include <iostream>
 #include "clases.h"
 using namespace std;
+#define pi 3.14159265359
 
 Punto::Punto(float x, float y) {
     posx = x;
@@ -54,7 +55,7 @@ Elipse::Elipse(float x, float y, float semi_mayor, float semi_menor){
 void Elipse::set_posx(float x){
     posx = x;
 }
-void Elipse::set_posx(float y){
+void Elipse::set_posy(float y){
     posx = y;
 }
 void Elipse::set_semieje_mayor(float semi_mayor){
@@ -107,3 +108,24 @@ float Rectangulo::get_ancho(){
 float Rectangulo::get_largo(){
     return largo;
 }
+
+
+template<>
+float procesadorFigura<Punto>::calcularArea(Punto &p){
+    return 0;
+};
+template<>
+float procesadorFigura<Circulo>::calcularArea(Circulo &circ){
+    return pi * circ.get_radio() * circ.get_radio();
+};
+template<>
+float procesadorFigura<Elipse>::calcularArea(Elipse &elip){
+    return pi * elip.get_semieje_mayor() * elip.get_semieje_menor();
+};
+template<>
+float procesadorFigura<Rectangulo>::calcularArea(Rectangulo &rect){
+    return rect.get_ancho() * rect.get_largo();
+};
+
+
+//agregar los const eventualmente

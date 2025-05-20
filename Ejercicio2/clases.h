@@ -60,3 +60,10 @@ class Rectangulo{
         float get_ancho();
         float get_largo();     
 };
+
+
+template <typename T>
+class procesadorFigura{
+    public:
+        static float calcularArea(T& figura);
+};
