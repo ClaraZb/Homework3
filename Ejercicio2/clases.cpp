@@ -129,3 +129,5 @@ float procesadorFigura<Rectangulo>::calcularArea(Rectangulo &rect){
 
 
 //agregar los const eventualmente
+//agregar comentarios
+//agregar tests de todo en el main
