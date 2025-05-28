@@ -5,6 +5,10 @@
 #include <string>
 using namespace std;
 
+/*Este ejercicio me costo mucho abordarlo, porque habian demasiadas maneras para hacerlo.
+Explico mas en detalle mis decisiones en Archivo.h y Generador.h. 
+Agrego uno a uno los elementos al generador, y luego llamo a la funcion de Archivo
+para escribir el archivo json y despues visualizarlo por pantalla. */
 
 int main() {
     Generador::agregar(1.3);

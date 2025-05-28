@@ -7,13 +7,16 @@ using namespace std;
 
 /*En un principio considere hacer una clase plantilla, es decir que se llame
 a generador 3 veces, una para cada tipo de vector que se quiere agregar al json.
-Finalmente decidi que era mas claro si solo la funcion agregar dentro de la clase
-usaba templates. En esta implementacion, se le pasa a la clase Generador un vector 
-con elementos de un cierto tipo. Esta los procesa (usando if constexpr) y transforma
-el vector a un string con la notacion especifica de cada tipo. Para eso, detecta que
-tipo es T y llama a la funcion adecuada (era mas claro si modularizaba estas funciones).
-Despues de haber convertido el vector a un string, llama a la clase Archivo con ese
-string, para asociarle una etiqueta, y luego para escribir en el json.
+Finalmente decidi que era mas claro si solo las funciones agregar y convertir_string
+dentro de la clase usaban templates. 
+
+En esta implementacion, se le pasa a la clase Generador elementos 
+de un cierto tipo. Esta los procesa (usando if constexpr) y los agrega a su vector
+correspondiente (hay uno para cada tipo), detectando que tipo es T. 
+
+Esta clase es llamada por la clase Archivo, por lo que implemento los getters de los vectores.
+Decido hacerla static para no tener que instanciarla. Implemento tambien metodos para convertir
+el vector a string, asociandole la notacion adecuada a su tipo. 
 
 Las funciones que usaban templates las implemente en Generador.h, pero las otras las
 implemente en Generador.cpp. */

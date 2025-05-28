@@ -6,7 +6,12 @@
 using namespace std;
 #pragma once
 
-//hacer algunos metodos private?
+/*Esta funcion me permite escribir el json. O bien visualizarlo. 
+Para escribir el json, llamo 3 veces a la funcion escribir_vector (una por cada vector
+de la clase Generador), convierto el vector a string con el metodo de la clase Generador,
+le asocio su etiqueta, y dejo el string listo para que pueda ser agregado al archivo. 
+Decidi hacerla static para no tener que instanciarla. */
+
 class Archivo{
     public:
         static void escribir_archivo();
