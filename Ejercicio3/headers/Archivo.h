@@ -5,6 +5,7 @@
 using namespace std;
 #pragma once
 
+//hacer algunos metodos private?
 class Archivo{
     public:
         template <typename T> 
