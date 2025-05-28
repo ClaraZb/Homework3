@@ -4,10 +4,11 @@
 
 class SaveFlightData{
     public: 
-        //Posicion posicion;
-        //Presion presion;
+        Posicion posicion;
+        Presion presion;
+
         SaveFlightData(const Posicion& p, const Presion& q);
-        //serializar
-        //deserializar
+        void serializar(ofstream& out) const;
+        void deserializar(ifstream& in);
         void imprimir();
 };      
