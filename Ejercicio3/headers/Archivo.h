@@ -2,17 +2,28 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include "Generador.h"
 using namespace std;
 #pragma once
 
 //hacer algunos metodos private?
 class Archivo{
     public:
+        static void escribir_archivo();
+        static void visualizar_archivo();
+    private:
+        template <typename T>
+        static string escribir_vector(vector<T> vec);
         template <typename T> 
         static string etiquetar(const vector<T> &vec);
-        static void escribir_archivo(string &etiqueta, string &vector_s);
-        static void visualizar_archivo();
 };
+
+template <typename T>
+string Archivo::escribir_vector(vector<T> vec){
+    string datos = Generador::convertir_string(vec);
+    string etiqueta = etiquetar(vec);
+    return etiqueta + ": " + datos;
+}
 
 template<typename T>
 string Archivo::etiquetar(const vector<T> &vec){

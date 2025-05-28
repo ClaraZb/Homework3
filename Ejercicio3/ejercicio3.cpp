@@ -7,15 +7,15 @@ using namespace std;
 
 
 int main() {
-    vector<double> vec1 = {1.3, 2.1, 3.2};
-    Generador::agregar(vec1);
+    Generador::agregar(1.3);
+    Generador::agregar(string("Hola"));
+    Generador::agregar(2.1);
+    Generador::agregar(vector<int>{3,4});
+    Generador::agregar(3.2);
+    Generador::agregar(string("Mundo"));
+    Generador::agregar(vector<int>{1,2});
 
-    vector<string> vec2 = {"Hola", "Mundo"};
-    Generador::agregar(vec2);
-
-    vector<vector<int>> vec3 = {{1, 2},{3, 4}};
-    Generador::agregar(vec3);
-
+    Archivo::escribir_archivo();
     Archivo::visualizar_archivo();
     return 0;
 }

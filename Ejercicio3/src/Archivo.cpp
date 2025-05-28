@@ -2,15 +2,21 @@
 #include <vector>
 #include <string>
 #include "../headers/Archivo.h"
+#include "../headers/Generador.h"
 using namespace std;
 
+void Archivo::escribir_archivo(){
+    vector<double> vec_d = Generador::get_vec_double();
+    vector<string> vec_s = Generador::get_vec_string();
+    vector<vector<int>> vec_i = Generador::get_vec_vec_int();
 
-void Archivo::escribir_archivo(string&etiqueta, string&vector_s){
-    ofstream archivo("salida.json", ios::app); 
-    if (archivo.is_open()) {
-        archivo << etiqueta << ": " << vector_s << endl;
-        archivo.close();
-    } 
+    ofstream archivo("salida.json", ios::app);
+    archivo << "{ "
+    << escribir_vector(vec_d) << ", " << endl
+    << "  " << escribir_vector(vec_s) << ", " << endl
+    << "  " << escribir_vector(vec_i) << endl 
+    << "}";
+    archivo.close();
 }
 
 void Archivo::visualizar_archivo() {

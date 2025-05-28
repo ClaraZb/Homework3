@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include "Archivo.h"
 using namespace std;
 #pragma once
 
@@ -23,23 +22,38 @@ class Generador{
     public:
         Generador();
         template <typename T>
-        static void agregar(const vector<T>& lista);
-        
-    private:
+        static void agregar(const T& elt);
         template <typename T>
         static string convertir_string(const vector<T>& lista);
+
+        static vector<string> get_vec_string();
+        static vector<double> get_vec_double();
+        static vector<vector<int>> get_vec_vec_int();
+        
+    private:
+        static vector<double> vec_double;
+        static vector<string> vec_string;
+        static vector<vector<int>> vec_vec_int;
 
         static string string_to_string(const vector<string>& lista);
         static string double_to_string(const vector<double>& lista);
         static string vector_to_string(const vector<vector<int>>& lista);
 };
 
-template<typename T>
-void Generador::agregar(const vector<T>& lista) {
-    string vector_s = convertir_string(lista); //convierte a string y agrega notacion necesaria
-    string etiqueta = Archivo::etiquetar(lista); //asocia el vector a su etiqueta
-    Archivo::escribir_archivo(etiqueta, vector_s); //una vez que ya se tiene la etiqueta y el vector, se escribe el json
+template <typename T>
+void Generador::agregar(const T& elt){
+    if constexpr(is_same_v<T, double>){
+        vec_double.push_back(elt);
+    }
+    else if constexpr(is_same_v<T, string>){
+        vec_string.push_back(elt);
+    }
+    else if constexpr(is_same_v<T, vector<int>>){
+        vec_vec_int.push_back(elt);
+    }
+    else return;
 }
+
 
 template <typename T>
 string Generador::convertir_string(const vector<T>& lista){

@@ -31,7 +31,7 @@ string Generador::double_to_string(const vector<double>& lista){
 string Generador::vector_to_string(const vector<vector<int>>& lista){
     string imprimir = "[ \n";
     for(int i = 0; i < lista.size(); i ++){
-        imprimir += "[";
+        imprimir += "\t[";
         for (int j = 0; j < lista[i].size(); j ++){
             imprimir += to_string(lista[i][j]);
             if (j != lista[i].size() - 1){ //si es el ultimo elt no se agrega una coma
@@ -46,3 +46,18 @@ string Generador::vector_to_string(const vector<vector<int>>& lista){
     imprimir += "\n]";
     return imprimir;
 }
+
+vector<double> Generador::get_vec_double(){
+    return vec_double;
+}
+vector<string> Generador::get_vec_string(){
+    return vec_string;
+}
+vector<vector<int>> Generador::get_vec_vec_int(){
+    return vec_vec_int;
+}
+
+//tengo que hacer esto porq declare todo como static
+vector<double> Generador::vec_double;
+vector<string> Generador::vec_string;
+vector<vector<int>> Generador::vec_vec_int;
