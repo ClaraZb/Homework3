@@ -8,6 +8,7 @@ class SaveFlightData{
         Presion presion;
 
         SaveFlightData(const Posicion& p, const Presion& q);
+        
         void serializar(ofstream& out) const;
         void deserializar(ifstream& in);
         void imprimir();

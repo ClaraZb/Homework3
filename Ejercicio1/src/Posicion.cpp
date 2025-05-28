@@ -4,12 +4,14 @@
 #include <fstream>
 using namespace std;
 
+//Constructor 
 Posicion::Posicion(float lat, float lon, float alt, float t): MedicionBase(t){
     latitud = lat;
     longitud = lon;
     altitud = alt;
 }
 
+//Constructor para la copia
 Posicion::Posicion(const Posicion& otro): MedicionBase(otro){
     latitud = otro.latitud;
     longitud = otro.longitud;
@@ -23,7 +25,6 @@ void Posicion::imprimir(){
     << "Tiempo medicion: " << to_string(*tiempoMedicion) << endl;
 }
 
-//incluir medicionbase?
 void Posicion::serializar(ofstream& out) const {
     MedicionBase::serializar(out);
     out.write(reinterpret_cast<const char*>(&latitud), sizeof(latitud));

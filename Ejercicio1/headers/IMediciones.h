@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+//Interfaz
 class IMediciones{
     public:
         virtual void serializar(ofstream& out) const = 0;

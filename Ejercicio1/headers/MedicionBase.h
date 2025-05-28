@@ -2,10 +2,11 @@
 #include <memory>
 #pragma once
 
+//Clase abstracta
 class MedicionBase: public IMediciones{
     public:
-        float getTiempo();
         virtual void imprimir() = 0;
+        float getTiempo();
         void serializar(ofstream& out) const override; 
         void deserializar(ifstream& in) override;
         virtual ~MedicionBase(){}; //destructor

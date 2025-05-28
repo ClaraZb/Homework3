@@ -4,12 +4,13 @@
 #include <fstream>
 using namespace std;
 
+//Constructor
 Presion::Presion(float p, float q, float t): MedicionBase(t){
     presionEstatica = p;
     presionDinamica = q;
 };
 
-//constructor para la copia
+//Constructor para la copia
 Presion::Presion(const Presion& otro): MedicionBase(otro){
     presionEstatica = otro.presionEstatica;
     presionDinamica = otro.presionDinamica;

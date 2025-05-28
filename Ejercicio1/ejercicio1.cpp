@@ -8,6 +8,15 @@
 #include <fstream>
 using namespace std;
 
+/*Un problema que tuve al implementar SaveFlightData fue relacionado a los atributos Presion y Posicion, 
+ya que estos tienen un atributo manejado con unique_ptr. En lugar de transferir el ownership con move, 
+decidi hacer una deep copy de estos objetos, por lo que fue necesario implementar los constructores adecuados
+en Presion, Posicion y MedicionBase. Los marco com "Constructores para la copia". 
+
+En cuanto a la serializacion y deserializacion, las implemente en MedicionBase, Posicion y Presion. Al serializar
+en Posicion y Presion, antes serializaba en MedicionBase, llamando a su metodo. Lo mismo al deserializar. 
+*/
+
 int main(){
     Posicion posicion(-34.6f, -58.4f, 950.0f, 5.3f);
     cout << "Imprimiendo posicion: " << endl;
